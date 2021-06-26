@@ -44,5 +44,5 @@ Tal aplicação consiste numa plataforma de Q&A em tempo real, que têm como obj
 <p>O projeto está hospedado e disponível para uso no seguinte link: https://letmeask-48e6d.web.app</p>
 
 <h2 id="license"> 📄 Licença </h2>
-<p>Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.</p>
+<p>Esse projeto está sob a licença MIT. Veja o arquivo LICENSE.md para mais detalhes.</p>
 
