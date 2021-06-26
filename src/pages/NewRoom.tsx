@@ -3,10 +3,12 @@ import { Link, useHistory } from 'react-router-dom';
 
 import illustrationImg from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg';
+import logoImgDark from '../assets/images/logo-dark.svg';
 
 import { Button } from '../components/Button';
 import { database } from '../services/firebase';
 import { useAuth } from '../hooks/useAuth';
+import { useTheme } from '../hooks/useTheme';
 
 import '../styles/auth.scss';
 
@@ -14,6 +16,8 @@ export function NewRoom() {
     const { user } = useAuth();
     const history = useHistory();
     const [newRoom, setNewRoom] = useState('');
+
+    const { theme, toggleTheme } = useTheme();
 
     async function handleCreateRoom(event: FormEvent) {
         event.preventDefault();
@@ -33,17 +37,22 @@ export function NewRoom() {
     }
 
     return (
-        <div id="page-auth">
-            <aside>
+        <div id="page-auth" className={theme}>
+            <aside className={theme}>
                 <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
                 <strong>Crie salas de Q&amp;A ao-vivo</strong>
                 <p>Tires as dúvidas da sua audiência em tempo-real</p>
             </aside>
             <main>
+                <label onChange={toggleTheme} className="switch">
+                    <input type="checkbox" />
+                    <span className="slider round"></span>
+                </label>
                 <div className="main-content">
-                    <img src={logoImg} alt="Letmeask" />
-                    <h2>Criar uma nova sala</h2>
-                    <form onSubmit={handleCreateRoom}>
+                    {(theme === 'light') ? <img src={logoImg} alt="Letmeask" />
+                        : <img src={logoImgDark} alt="Letmeask" />}
+                    <h2 className={theme}>Criar uma nova sala</h2>
+                    <form onSubmit={handleCreateRoom} className={theme}>
                         <input
                             type="text"
                             placeholder="Nome da sala"
